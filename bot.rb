@@ -3,6 +3,9 @@ require "yaml"
 require "twitter"
 require "activesupport"
 
+# version
+version = "v1.0.0"
+
 # config file
 conf = YAML.load_file File.expand_path(".", "config.yml")
 
@@ -17,6 +20,12 @@ client = Twitter::REST::Client.new do |config|
   config.access_token_secret = conf['twitter']['access_token_secret']
 end
 
+# Generic text output
+puts "twitter-imagebot #{version} by pixeldesu"
+puts "running on @#{client.user.screen_name} hosted by @#{conf['username']}"
+puts "----------------------------------------"
+
+# The loop the bots code is running in, do NOT touch this unless you know what to do
 loop do
   begin
     post_img = img.sample

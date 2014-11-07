@@ -1,3 +1,6 @@
+# Username (twitter handle of the person who hosts this bot)
+username: username
+
 # Sleep time (in minutes)
 sleep_time: 15
 
