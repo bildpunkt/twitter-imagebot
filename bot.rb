@@ -30,12 +30,12 @@ loop do
     post_img = img.sample
     if File.exists? File.expand_path("../#{conf['image_directory']}#{post_img['location']}", __FILE__)
       client.update_with_media "#{post_img['name']} | #{post_img['source']}", File.new("#{conf['image_directory']}#{post_img['location']}")
-      puts "[#{time.new.to_s}] Successfully posted image '#{post_img['name']}'"
+      puts "[#{Time.new.to_s}] Successfully posted image '#{post_img['name']}'"
     else
-      puts "[#{time.new.to_s}] No image for #{post_img['name']} found!"
+      puts "[#{Time.new.to_s}] No image for #{post_img['name']} found!"
     end
   rescue Exception => e
-    puts "[#{time.new.to_s}] #{e.message}"
+    puts "[#{Time.new.to_s}] #{e.message}"
   end
-  sleep conf['sleep_time'].minutes
+  sleep conf['sleep_time'].to_i * 60
 end
