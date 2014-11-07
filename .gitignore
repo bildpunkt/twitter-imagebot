@@ -1,3 +1,4 @@
 .directory
 config.yml
 images.yml
+Gemfile.lock
