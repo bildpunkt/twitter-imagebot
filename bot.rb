@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 require "yaml"
 require "twitter"
-require "activesupport"
 
 # version
 version = "v1.0.0"
