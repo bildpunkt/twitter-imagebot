@@ -20,7 +20,7 @@ client = Twitter::REST::Client.new do |config|
 end
 
 # Generic text output
-puts "twitter-imagebot #{version} by pixeldesu"
+puts "\033[34;1mtwitter-imagebot #{version}\033[0m by pixeldesu"
 puts "running on @#{client.user.screen_name} hosted by @#{conf['username']}"
 puts "----------------------------------------"
 
@@ -30,12 +30,13 @@ loop do
     post_img = img.sample
     if File.exists? File.expand_path("../#{conf['image_directory']}#{post_img['location']}", __FILE__)
       client.update_with_media "#{post_img['name']} | #{post_img['source']}", File.new("#{conf['image_directory']}#{post_img['location']}")
-      puts "[#{Time.new.to_s}] Successfully posted image '#{post_img['name']}'"
+      puts "\033[32;1m[#{Time.new.to_s}] Successfully posted image '#{post_img['name']}'\033[0m"
     else
-      puts "[#{Time.new.to_s}] No image for #{post_img['name']} found!"
+      puts "\033[31;1m[#{Time.new.to_s}] No image for #{post_img['name']} found!\033[0m"
     end
   rescue Exception => e
-    puts "[#{Time.new.to_s}] #{e.message}"
+    puts "\033[31;1m[#{Time.new.to_s}] #{e.message}\033[0m"
   end
+  # since activesupport doesn't like my bot, lets use this hack
   sleep conf['sleep_time'].to_i * 60
 end

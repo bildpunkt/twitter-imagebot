@@ -48,6 +48,8 @@ Every block for one image looks like this:
 * `location`: The filename/location of one image, you can just use image names or include directories in between (examples: `image.jpg`, `dir/image.jpg`)
 * `source`: The link to the original image, as the artist published it (no, (any)chan, (any)booru are no sources)
 
-## License
+## License & Notice to Hosters
 
-twitter-imagebot is licensed under the MIT License
+twitter-imagebot is licensed under the [MIT License](http://opensource.org/licenses/MIT)
+
+Also, regarding the licensing, I'd like you (if you set up a bot with this software) to put at least the link to my Github profile or to this repository in it's profile, so people know who made the software behind this.
