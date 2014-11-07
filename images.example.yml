@@ -1,1 +1,3 @@
- 
+- name: IMAGE_NAME_HERE
+  location: IMAGE_LOCATION_HERE
+  source: IMAGE_SOURCE HERE # (any)chan, (any)booru, etc. are no sources!
