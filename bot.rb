@@ -7,7 +7,7 @@ require "activesupport"
 conf = YAML.load_file File.expand_path(".", "config.yml")
 
 # image file
-img = YAML.load_file File.expand_path(".", "config.yml")
+img = YAML.load_file File.expand_path(".", "images.yml")
 
 # Twitter client configuration
 client = Twitter::REST::Client.new do |config|
@@ -18,5 +18,15 @@ client = Twitter::REST::Client.new do |config|
 end
 
 loop do
+  begin
+    post_img = img.sample
+    if File.exists? File.expand_path("../#{conf['image_directory']}#{post_img['location']}", __FILE__)
+      client.update_with_media "#{post_img['name']} | #{post_img['source']}", File.new("#{conf['image_directory']}#{post_img['location']}")
+    else
+      puts "[#{time.new.to_s}] No image for #{post_img['location']} found!"
+    end
+  rescue Exception => e
+    puts "[#{time.new.to_s}] #{e.message}"
+  end
   sleep conf['sleep_time'].minutes
 end
