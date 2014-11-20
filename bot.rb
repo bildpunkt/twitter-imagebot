@@ -19,6 +19,9 @@ client = Twitter::REST::Client.new do |config|
   config.access_token_secret = conf['twitter']['access_token_secret']
 end
 
+last_img = ""
+reroll = false
+
 # Generic text output
 puts "\033[34;1mtwitter-imagebot #{version}\033[0m by pixeldesu"
 puts "running on @#{client.user.screen_name} hosted by @#{conf['username']}"
